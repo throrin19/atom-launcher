@@ -1,0 +1,26 @@
+{
+  "context-menu": {
+    "atom-text-editor": [
+      {
+        "label": "Toggle atom-launcher",
+        "command": "atom-launcher:toggle"
+      }
+    ]
+  },
+  "menu": [
+    {
+      "label": "Packages",
+      "submenu": [
+        {
+          "label": "atom-launcher",
+          "submenu": [
+            {
+              "label": "Toggle",
+              "command": "atom-launcher:toggle"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
