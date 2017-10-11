@@ -8,7 +8,7 @@
           "submenu": [
             {
               "label": "Toggle",
-              "command": "atom-launcher:toggle"
+              "command": "active-launcher-panel:toggle"
             }
           ]
         }
