@@ -8,66 +8,66 @@ import AtomLauncher from '../lib/atom-launcher';
 // or `fdescribe`). Remove the `f` to unfocus the block.
 
 describe('AtomLauncher', () => {
-  let workspaceElement, activationPromise;
+    let workspaceElement, activationPromise;
 
-  beforeEach(() => {
-    workspaceElement = atom.views.getView(atom.workspace);
-    activationPromise = atom.packages.activatePackage('atom-launcher');
-  });
-
-  describe('when the atom-launcher:toggle event is triggered', () => {
-    it('hides and shows the modal panel', () => {
-      // Before the activation event the view is not on the DOM, and no panel
-      // has been created
-      expect(workspaceElement.querySelector('.atom-launcher')).not.toExist();
-
-      // This is an activation event, triggering it will cause the package to be
-      // activated.
-      atom.commands.dispatch(workspaceElement, 'atom-launcher:toggle');
-
-      waitsForPromise(() => {
-        return activationPromise;
-      });
-
-      runs(() => {
-        expect(workspaceElement.querySelector('.atom-launcher')).toExist();
-
-        let atomLauncherElement = workspaceElement.querySelector('.atom-launcher');
-        expect(atomLauncherElement).toExist();
-
-        let atomLauncherPanel = atom.workspace.panelForItem(atomLauncherElement);
-        expect(atomLauncherPanel.isVisible()).toBe(true);
-        atom.commands.dispatch(workspaceElement, 'atom-launcher:toggle');
-        expect(atomLauncherPanel.isVisible()).toBe(false);
-      });
+    beforeEach(() => {
+        workspaceElement = atom.views.getView(atom.workspace);
+        activationPromise = atom.packages.activatePackage('atom-launcher');
     });
 
-    it('hides and shows the view', () => {
-      // This test shows you an integration test testing at the view level.
+    describe('when the atom-launcher:toggle event is triggered', () => {
+        it('hides and shows the modal panel', () => {
+            // Before the activation event the view is not on the DOM, and no panel
+            // has been created
+            expect(workspaceElement.querySelector('.atom-launcher')).not.toExist();
 
-      // Attaching the workspaceElement to the DOM is required to allow the
-      // `toBeVisible()` matchers to work. Anything testing visibility or focus
-      // requires that the workspaceElement is on the DOM. Tests that attach the
-      // workspaceElement to the DOM are generally slower than those off DOM.
-      jasmine.attachToDOM(workspaceElement);
+            // This is an activation event, triggering it will cause the package to be
+            // activated.
+            atom.commands.dispatch(workspaceElement, 'atom-launcher:toggle');
 
-      expect(workspaceElement.querySelector('.atom-launcher')).not.toExist();
+            waitsForPromise(() => {
+                return activationPromise;
+            });
 
-      // This is an activation event, triggering it causes the package to be
-      // activated.
-      atom.commands.dispatch(workspaceElement, 'atom-launcher:toggle');
+            runs(() => {
+                expect(workspaceElement.querySelector('.atom-launcher')).toExist();
 
-      waitsForPromise(() => {
-        return activationPromise;
-      });
+                let atomLauncherElement = workspaceElement.querySelector('.atom-launcher');
+                expect(atomLauncherElement).toExist();
 
-      runs(() => {
-        // Now we can test for view visibility
-        let atomLauncherElement = workspaceElement.querySelector('.atom-launcher');
-        expect(atomLauncherElement).toBeVisible();
-        atom.commands.dispatch(workspaceElement, 'atom-launcher:toggle');
-        expect(atomLauncherElement).not.toBeVisible();
-      });
+                let atomLauncherPanel = atom.workspace.panelForItem(atomLauncherElement);
+                expect(atomLauncherPanel.isVisible()).toBe(true);
+                atom.commands.dispatch(workspaceElement, 'atom-launcher:toggle');
+                expect(atomLauncherPanel.isVisible()).toBe(false);
+            });
+        });
+
+        it('hides and shows the view', () => {
+            // This test shows you an integration test testing at the view level.
+
+            // Attaching the workspaceElement to the DOM is required to allow the
+            // `toBeVisible()` matchers to work. Anything testing visibility or focus
+            // requires that the workspaceElement is on the DOM. Tests that attach the
+            // workspaceElement to the DOM are generally slower than those off DOM.
+            jasmine.attachToDOM(workspaceElement);
+
+            expect(workspaceElement.querySelector('.atom-launcher')).not.toExist();
+
+            // This is an activation event, triggering it causes the package to be
+            // activated.
+            atom.commands.dispatch(workspaceElement, 'atom-launcher:toggle');
+
+            waitsForPromise(() => {
+                return activationPromise;
+            });
+
+            runs(() => {
+                // Now we can test for view visibility
+                let atomLauncherElement = workspaceElement.querySelector('.atom-launcher');
+                expect(atomLauncherElement).toBeVisible();
+                atom.commands.dispatch(workspaceElement, 'atom-launcher:toggle');
+                expect(atomLauncherElement).not.toBeVisible();
+            });
+        });
     });
-  });
 });
