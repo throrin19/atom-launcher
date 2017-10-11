@@ -1,12 +1,9 @@
 {
   "name": "atom-launcher",
   "main": "./lib/atom-launcher",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A short description of your package",
   "keywords": [],
-  "activationCommands": {
-    "atom-workspace": "atom-launcher:toggle"
-  },
   "repository": "https://github.com/atom/atom-launcher",
   "license": "MIT",
   "engines": {
@@ -16,5 +13,12 @@
   "devDependencies": {
     "eslint": "4.8.0",
     "eslint-config-throrinstudio": "1.0.1"
+  },
+  "consumedServices": {
+    "status-bar": {
+      "versions": {
+        "^1.0.0": "consumeStatusBar"
+      }
+    }
   }
 }

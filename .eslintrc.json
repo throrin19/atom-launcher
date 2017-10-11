@@ -1,3 +1,6 @@
 {
-    "extends" : "@goomeo/goomeo"
+    "extends" : "throrinstudio",
+    "parserOptions": {
+        "sourceType": "module"
+    }
 }
