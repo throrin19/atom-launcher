@@ -1,0 +1,19 @@
+[
+  {
+    "id": "f20938c0-b012-11e7-9776-65850dfda442",
+    "isNew": true,
+    "name": "server",
+    "binary": "/usr/bin/node",
+    "execFile": "server.js",
+    "envs": [
+      {
+        "key": "ENVIRONMENT",
+        "value": "local"
+      },
+      {
+        "key": "MONGO_HOST",
+        "value": "localhost"
+      }
+    ]
+  }
+]
